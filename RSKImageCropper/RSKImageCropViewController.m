@@ -286,6 +286,7 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
 {
     if (!_imageScrollView) {
         _imageScrollView = [[RSKImageScrollView alloc] init];
+        _imageScrollView.smallestPhotoSide = self.smallestPhotoSide;
         _imageScrollView.clipsToBounds = NO;
         _imageScrollView.aspectFill = self.avoidEmptySpaceAroundImage;
     }
@@ -449,6 +450,13 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         self.imageScrollView.aspectFill = avoidEmptySpaceAroundImage;
     }
 }
+
+-(void)setSmallestPhotoSide:(CGFloat)smallestPhotoSide
+{
+    _smallestPhotoSide = smallestPhotoSide;
+    self.imageScrollView.smallestPhotoSide = smallestPhotoSide;
+}
+
 
 - (void)setCropMode:(RSKImageCropMode)cropMode
 {

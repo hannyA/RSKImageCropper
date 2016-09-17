@@ -151,6 +151,12 @@ typedef NS_ENUM(NSUInteger, RSKImageCropMode) {
 @property (assign, nonatomic) BOOL avoidEmptySpaceAroundImage;
 
 /**
+ A CGFloat value that is the smallest length of a side of a photo
+ */
+
+@property (assign, nonatomic) CGFloat smallestPhotoSide;
+
+/**
  A Boolean value that determines whether the mask applies to the image after cropping. Default value is `NO`.
  */
 @property (assign, nonatomic) BOOL applyMaskToCroppedImage;

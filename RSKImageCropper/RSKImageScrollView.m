@@ -224,6 +224,14 @@
     maxImageScale = MAX(minScale, maxImageScale);
     maxScale = MAX(maxScale, maxImageScale);
 
+    
+    if (boundsSize.width < boundsSize.height) {
+        maxScale = MIN(maxScale, boundsSize.width / self.smallestPhotoSide);
+    } else {
+        maxScale = MIN(maxScale, boundsSize.height / self.smallestPhotoSide);
+    }
+    
+    
     // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.)
     if (minScale > maxScale) {
         minScale = maxScale;

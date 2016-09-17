@@ -49,6 +49,7 @@
 
 @interface RSKImageScrollView : UIScrollView
 
+@property (nonatomic, assign) CGFloat smallestPhotoSide;
 @property (nonatomic, strong) UIImageView *zoomView;
 @property (nonatomic, assign) BOOL aspectFill;
 
