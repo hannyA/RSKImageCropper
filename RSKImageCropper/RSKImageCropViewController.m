@@ -842,21 +842,44 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     CGFloat width = CGRectGetWidth(cropRect);
     CGFloat height = CGRectGetHeight(cropRect);
     
+    
+    //HannyEdit
+    
     UIImageOrientation imageOrientation = image.imageOrientation;
+
     if (imageOrientation == UIImageOrientationRight || imageOrientation == UIImageOrientationRightMirrored) {
+        NSLog( @"imageOrientation: UIImageOrientationRight"  );
+
         cropRect.origin.x = y;
         cropRect.origin.y = round(imageSize.width - CGRectGetWidth(cropRect) - x);
         cropRect.size.width = height;
         cropRect.size.height = width;
-    } else if (imageOrientation == UIImageOrientationLeft || imageOrientation == UIImageOrientationLeftMirrored) {
-        cropRect.origin.x = round(imageSize.height - CGRectGetHeight(cropRect) - y);
+    }
+    if (imageOrientation == UIImageOrientationLeft || imageOrientation == UIImageOrientationLeftMirrored) {
+        NSLog( @"imageOrientation: UIImageOrientationLeft"  );
+
+        cropRect.origin.x = y;
         cropRect.origin.y = x;
         cropRect.size.width = height;
         cropRect.size.height = width;
-    } else if (imageOrientation == UIImageOrientationDown || imageOrientation == UIImageOrientationDownMirrored) {
-        cropRect.origin.x = round(imageSize.width - CGRectGetWidth(cropRect) - x);
-        cropRect.origin.y = round(imageSize.height - CGRectGetHeight(cropRect) - y);
+   
     }
+
+//    if (imageOrientation == UIImageOrientationRight || imageOrientation == UIImageOrientationRightMirrored) {
+//        cropRect.origin.x = y;
+//        cropRect.origin.y = round(imageSize.width - CGRectGetWidth(cropRect) - x);
+//        cropRect.size.width = height;
+//        cropRect.size.height = width;
+//    } else if (imageOrientation == UIImageOrientationLeft || imageOrientation == UIImageOrientationLeftMirrored) {
+//        cropRect.origin.x = round(imageSize.height - CGRectGetHeight(cropRect) - y);
+//        cropRect.origin.y = x;
+//        cropRect.size.width = height;
+//        cropRect.size.height = width;
+//    } else if (imageOrientation == UIImageOrientationDown || imageOrientation == UIImageOrientationDownMirrored) {
+//        cropRect.origin.x = round(imageSize.width - CGRectGetWidth(cropRect) - x);
+//        cropRect.origin.y = round(imageSize.height - CGRectGetHeight(cropRect) - y);
+//    }
+    
     
     CGFloat imageScale = image.scale;
     cropRect = CGRectApplyAffineTransform(cropRect, CGAffineTransformMakeScale(imageScale, imageScale));
